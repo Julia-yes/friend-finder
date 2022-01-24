@@ -1,0 +1,19 @@
+.content__message {
+    color: #4d4d4d;
+    padding: 20px;
+    width: 80%;
+    margin: 20px
+}
+
+.content__message_me {
+    background-color: #f3f9eb;
+    margin-left: auto;
+    margin-right: 0;
+
+
+}
+
+.content__message_either {
+    background-color: #e9f6fc;
+
+}

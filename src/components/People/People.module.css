@@ -1,0 +1,57 @@
+.person {
+    display: grid;
+    grid-template-columns: 1fr 5fr 2fr;
+    padding: 20px 0;
+    border-top: 1px solid #f1f2f2;
+    border-bottom: 1px solid #f1f2f2;
+    margin-bottom: 20px;
+}
+
+.person__ava {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.person__name {
+    color: #27aae1;
+    padding-bottom: 10px;
+}
+
+.person__location {
+    color: #939598;
+    padding-top: 10px;
+}
+
+.person__button {
+    color: white;
+    padding: 7px 25px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.person__button:hover {
+    filter: brightness(0.9);
+}
+
+.person__button_add {
+    background-color: #8dc63f;
+}
+
+.person__button_delete {
+    background-color: #27aae1;
+}
+
+.activePage {
+    font-weight: bold;
+
+}
+.pages__area {
+    cursor: pointer;
+}
+
+span {
+    padding: 10px;
+}

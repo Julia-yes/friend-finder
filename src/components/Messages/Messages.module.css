@@ -1,0 +1,45 @@
+.messages_area {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.messages__dialogs {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.dialogs__item {
+    color: #27aae1;
+}
+
+.messages__form {
+    border: 20px solid #eeeeee;
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.form__button {
+    display: flex;
+    color: white;
+    background-color: black;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0 ;
+    right: 0;
+}
+
+.form__input {
+    display: flex;
+    padding: 0;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    flex-grow: 1;
+}
+
+.form__input:focus {
+    outline: 1px solid #27aae1;
+}
