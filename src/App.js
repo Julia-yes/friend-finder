@@ -11,9 +11,17 @@ import Login from './components/Login/Login';
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import ProfileContainer from './components/Profile/ProfileContainer';
+import {isInitialized} from "./components/redux/app-reducer";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import { componentWithRedirect } from "./HOC/WithRedirect";
 
-const App = (props) => {
-    return (
+class App extends React.Component {
+    componentDidMount() {
+        this.props.isInitialized()
+    }
+    render() {
+        return (
         <Router>
             <div className="wrapper">
                 <HeaderContainer/>
@@ -35,7 +43,15 @@ const App = (props) => {
             </div>
         </Router>
     );
+    }
+    
 }
 
+const mapStateToProps = (state) => ({
+    initialization: state.app.initialization
+})
 
-export default App;
+export default compose(
+    connect(mapStateToProps, {isInitialized}),
+    
+)(App)

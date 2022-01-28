@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import {usersApi} from "../../api/api.jsx";
 
 const People = (props) => {
-
     let pagesCount = Math.ceil(props.totalCount / props.countUsersOnPage);
     let pages = [];
     for (let i=1; i <= 10; i++) {

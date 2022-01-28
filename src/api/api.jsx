@@ -33,6 +33,18 @@ export const usersApi = {
             return response.data 
         })
     },
+    login (email, password, rememberMe=false) {
+        return baseRequest.post(`auth/login`, {email, password, rememberMe})
+        .then(response => {
+            return response.data 
+        })
+    },
+    logout () {
+        return baseRequest.delete(`auth/login`)
+        .then(response => {
+            return response.data 
+        })
+    },
     getUserInfo (userId) {
         return baseRequest.get(`profile/` + userId)
         .then(response => {

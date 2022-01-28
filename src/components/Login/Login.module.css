@@ -1,0 +1,12 @@
+
+.error {
+  color: red
+}
+
+.error__full_form {
+  color: red;
+  border: 1px solid red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}

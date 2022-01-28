@@ -1,49 +1,56 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { values } from "redux-form";
+import s from "./Login.module.css";
+import {loginProcess} from "../redux/auth-reducer";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
-const ErrorPattern = (item, minSumbols, maxSumbols) => (values) => {
-item : Yup.string()
-  .min(minSumbols, 'Too Short!')
-  .max(maxSumbols, 'Too Long!')
-  .required('Required')
+const ErrorPattern = (item, minSumbols, maxSumbols) => {
+  return {
+    [item]: Yup.string()
+      .min(minSumbols, 'Too Short!')
+      .max(maxSumbols, 'Too Long!')
+      .required('Required')
+  };
 }
 
 const ErrorMessagesSchema = Yup.object().shape({
-  ErrorPattern(login, 2, 50),
-  ErrorPattern(password, 2, 50),
+  ...ErrorPattern('email', 5, 30),
+  ...ErrorPattern('password', 5, 50),
 });
 
+
 const Login = (props) => {
-    return <div>
-                <div>Create profile</div>
-                <LoginForm /> 
-            </div>
+  let userId = props.userId
+  if (props.isLogin) {
+  return <Navigate replace to={"/profile/" + userId} />
 }
 
-export default Login
+    return <div>
+                <div>Create profile</div>
+                <LoginForm loginProcess = {props.loginProcess} isLogin = {props.isLogin} errorMessage = {props.errorMessage}/> 
+            </div>
+};
 
-const LoginForm = () => (
+const mapStateToProps = (state) => ({
+  isLogin : state.auth.isLogin,
+  userId: state.auth.userId,
+  errorMessage: state.auth.errorMessage
+})
+
+export default connect(mapStateToProps, {loginProcess}) (Login)
+
+const LoginForm = (props) => (
     <div>
-      <Formik
-        initialValues={{ login: '', password: '' }}
-        validate={values => {
-          const errors = {};
-          if (!values.login) {
-            errors.login = 'Required';
-          } 
-          if (!values.password) {
-            errors.password = 'Required';
-          } 
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+      <Formik      
+        initialValues={{ email: '', password: '' }}
+        validationSchema={ErrorMessagesSchema}
+        onSubmit={(values) => {
+          props.loginProcess(values.email, values.password, values.checkbox);
+            
+          }
+        }
       >
         {({ values,
          errors,
@@ -53,11 +60,12 @@ const LoginForm = () => (
          handleSubmit,
          isSubmitting }) => (
           <form onSubmit={handleSubmit}>
-            Login<Field type="login" name="login" onChange={handleChange} onBlur={handleBlur} value={values.login} />
-            {errors.login && touched.login && errors.login} <br></br>
-            Password<Field type="password" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} />
-            {errors.password && touched.password && errors.password}<br></br>
+            <Field type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} placeholder="email"/>
+            {errors.email && touched.email ? <span className={s.error}>{errors.email}</span> : null} <br></br>
+            <Field type="password" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} placeholder="password" />
+            {errors.password && touched.password ? <span className={s.error}>{errors.password}</span> : null} <br></br>
             <Field type="checkbox" name="checkbox"/> remember me <br></br>
+            {props.errorMessage && <div className={s.error__full_form}>{props.errorMessage}</div> }
             <button type="submit" disabled={isSubmitting}>
               Create
             </button>

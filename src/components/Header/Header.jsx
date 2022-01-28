@@ -8,7 +8,12 @@ const Header = (props) => {
         <header className={s.header}>
             <img src={logo} alt="logo" />
             <div className={s.login__block}>
-                {props.isLogin ? props.login : <NavLink  to={"/login"}>Login</NavLink> }
+                {props.isLogin 
+                ? <div>
+                {props.login}
+                <button onClick={props.logoutProcess}>Logout</button>
+                </div>
+                : <NavLink  to={"/login"}>Login</NavLink> }
             </div>
         </header>
     )
