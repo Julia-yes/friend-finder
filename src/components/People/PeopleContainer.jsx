@@ -3,7 +3,8 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import People from "./People.jsx";
 import {getUsers, unfollowUser, followUser} from "./../redux/people-reducer.js";
-import {componentWithRedirect} from "../../HOC/WithRedirect"
+import {componentWithRedirect} from "../../HOC/WithRedirect";
+import {getUsersSelector, getTotalCount, getCountUsersOnPage, getActivePage, getLoading, getProcessFollowed} from "../redux/selectors"
 
 class PeopleContainer extends React.Component {
 
@@ -118,12 +119,12 @@ class PeopleContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users : state.peoplePage.users,
-        totalCount: state.peoplePage.totalCount,
-        countUsersOnPage: state.peoplePage.countUsersOnPage,
-        activePage: state.peoplePage.activePage,
-        isLoading: state.peoplePage.isLoading,
-        inProcessFollowed: state.peoplePage.inProcessFollowed,
+        users : getUsersSelector(state),
+        totalCount: getTotalCount(state),
+        countUsersOnPage: getCountUsersOnPage(state),
+        activePage: getActivePage(state),
+        isLoading: getLoading(state),
+        inProcessFollowed: getProcessFollowed(state),
     }
 };
 

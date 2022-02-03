@@ -4,6 +4,7 @@ import Post from "./Post/Post";
 import { Formik, Field, Form } from 'formik';
 
 const MyPosts = (props) => {
+    console.log(1)
     let PostElement = props.posts.map(p => {
         return <Post message={p.message} count={p.likesCount}/>
     })

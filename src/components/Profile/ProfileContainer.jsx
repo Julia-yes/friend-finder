@@ -9,11 +9,11 @@ import {componentWithRedirect} from "../../HOC/WithRedirect";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        debugger
         let userId = this.props.router.params.userId;
         if (!userId) {
             userId = this.props.autorizedUserId
         }
+        console.log(userId)
         this.props.showUserInfo(userId)
         this.props.showUserStatus(userId)
     }

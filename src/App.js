@@ -13,8 +13,6 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import ProfileContainer from './components/Profile/ProfileContainer';
 import {isInitialized} from "./components/redux/app-reducer";
 import {connect} from "react-redux";
-import {compose} from "redux";
-import { componentWithRedirect } from "./HOC/WithRedirect";
 
 class App extends React.Component {
     componentDidMount() {
@@ -51,7 +49,4 @@ const mapStateToProps = (state) => ({
     initialization: state.app.initialization
 })
 
-export default compose(
-    connect(mapStateToProps, {isInitialized}),
-    
-)(App)
+export default connect(mapStateToProps, {isInitialized})(App)
