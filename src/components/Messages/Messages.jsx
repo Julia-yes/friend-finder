@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Messages.module.css"
 import Dialog from "./Dialogs/Dialogs";
 import Message from "./MassageItem/MessageItem.jsx";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik,Field} from 'formik';
 
 
 const Messages = (props) => {
@@ -44,7 +44,6 @@ const MessageForm = (props) => {
                 onSubmit={(values, { setSubmitting }) => {
                     props.addMessage(values.input);
                     setSubmitting(false);
-                   
                 }}
             >
                 {({ isSubmitting, handleSubmit }) => (
@@ -52,10 +51,9 @@ const MessageForm = (props) => {
                         <Field type="input" name="input" className={s.form__input} />
                         <button type="submit" disabled={isSubmitting} className={s.form__button}>Send</button>
                     </form>
-                    )}
+                )}
             </Formik>
         </div>
-        
     )
 }
 

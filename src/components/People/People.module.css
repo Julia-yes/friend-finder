@@ -43,15 +43,3 @@
 .person__button_delete {
     background-color: #27aae1;
 }
-
-.activePage {
-    font-weight: bold;
-
-}
-.pages__area {
-    cursor: pointer;
-}
-
-span {
-    padding: 10px;
-}

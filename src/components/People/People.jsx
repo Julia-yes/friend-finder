@@ -2,27 +2,12 @@ import React from "react";
 import s from "./People.module.css";
 import Preloader from "../Common/preloader.jsx";
 import { NavLink } from "react-router-dom";
-import {usersApi} from "../../api/api.jsx";
+import Pagination from "../Common/Pagination";
 
 const People = (props) => {
-    let pagesCount = Math.ceil(props.totalCount / props.countUsersOnPage);
-    let pages = [];
-    for (let i=1; i <= 10; i++) {
-        pages.push(i)
-    }
-    for (let i= (pagesCount-5); i <= pagesCount; i++) {
-        pages.push(i)
-    }
-
     return <div>
         {(props.isLoading === true) ? <Preloader /> : null}
-        <div className={s.pages__area}>
-            {pages.map(p => {
-                return <span className={props.activePage === p && s.activePage}
-                     onClick={(e) => {props.onPageChanges(p)}
-                }>{p}</span>
-            })}
-        </div>
+        <Pagination totalCount = {props.totalCount} countUsersOnPage = {props.countUsersOnPage} activePage = {props.activePage} onPageChanges = {props.onPageChanges}/>
         {props.users.map(u => <div className={s.person} key={u.id}>
             <NavLink to={'/profile/' + u.id}>
                 <img src={u.photos.small} className={s.person__ava}></img>

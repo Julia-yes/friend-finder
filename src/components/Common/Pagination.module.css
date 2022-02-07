@@ -1,0 +1,11 @@
+.activePage {
+    font-weight: bold;
+
+}
+.pages__area {
+    cursor: pointer;
+}
+
+span {
+    padding: 10px;
+}
