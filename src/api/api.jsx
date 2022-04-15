@@ -33,8 +33,8 @@ export const usersApi = {
             return response.data 
         })
     },
-    login (email, password, rememberMe=false) {
-        return baseRequest.post(`auth/login`, {email, password, rememberMe})
+    login (email, password, rememberMe=false, captcha=null) {
+        return baseRequest.post(`auth/login`, {email, password, rememberMe, captcha})
         .then(response => {
             return response.data 
         })
@@ -57,8 +57,32 @@ export const usersApi = {
             return response.data 
         })
     },
+    updateMainPhoto (photoFile) {
+        const formData = new FormData();
+        formData.append("image", photoFile);
+        return baseRequest.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(response => {
+            return response.data 
+        })
+    },
     updateMyStatus (status) {
         return baseRequest.put(`profile/status`, {status: status})
+        .then(response => {
+            return response.data 
+        })
+    },
+    updateMyProfile (profile) {
+        return baseRequest.put(`profile`, profile)
+        .then(response => {
+            return response.data 
+        })
+    },
+    getCaptcha () {
+        return baseRequest.get(`security/get-captcha-url`)
         .then(response => {
             return response.data 
         })

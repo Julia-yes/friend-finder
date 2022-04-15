@@ -12,7 +12,7 @@ const Profile = (props) => {
                       src="https://themified.com/friend-finder/images/covers/1.jpg">
                 </img>
             </div>
-            <ProfileInfo profile={props.profile} status = {props.status} updateMyStatus = {props.updateMyStatus}/>
+            <ProfileInfo profile={props.profile} status = {props.status} error = {props.error} updateMyStatus = {props.updateMyStatus} savePhotoProcess = {props.savePhotoProcess} updateMyProfile = {props.updateMyProfile} isOwner = {props.isOwner} />
             <MyPostsContainer />
         </div>
     )

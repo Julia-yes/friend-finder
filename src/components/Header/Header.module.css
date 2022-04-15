@@ -1,23 +1,62 @@
 
 .header {
   grid-area: h;
-  background-color: black;
 }
 
 .header img {
   width: 170px;
-  margin-top: 10px
+  align-items: center;
 }
 
 .login__block {
   float: right;
-  width: 170px;
-  margin-top: 10px;
-  background-color: #27aae1;
   color: white;
 }
 
 .login__block a {
 color: white;
 
+}
+
+.header .userLink {
+  margin: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.header .userLink:hover { 
+  border: 2px solid #27aae1;
+}
+
+.login__block__button {
+  padding: 0;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.modalWindow {
+position: absolute;
+top: 60px;
+right: 270px;
+color:white;
+background-color: black;
+display: block;
+ list-style: none; 
+ margin: 0;
+ padding: 0;
+}
+
+.modalWindow li {
+  cursor: pointer;
+  margin: 0px;
+  padding: 20px;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.modalWindow li:hover {
+  color: #27aae1
 }

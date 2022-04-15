@@ -26,24 +26,25 @@ const Login = (props) => {
   }
   return <div>
     <div>Create profile</div>
-    <LoginForm loginProcess = {props.loginProcess} isLogin = {props.isLogin} errorMessage = {props.errorMessage}/> 
+    <LoginForm loginProcess = {props.loginProcess} isLogin = {props.isLogin} errorMessage = {props.errorMessage} captcha = {props.captcha} /> 
   </div>
 };
 
 const mapStateToProps = (state) => ({
   isLogin : state.auth.isLogin,
   userId: state.auth.userId,
-  errorMessage: state.auth.errorMessage
+  errorMessage: state.auth.errorMessage,
+  captcha: state.auth.captcha
 })
 
 export default connect(mapStateToProps, {loginProcess}) (Login)
 
-const LoginForm = ({loginProcess, errorMessage}) => (
+const LoginForm = ({loginProcess, errorMessage, captcha}) => (
   <div>
     <Formik      
       initialValues={{ email: '', password: '' }}
       validationSchema={ErrorMessagesSchema}
-      onSubmit={(values) => {loginProcess(values.email, values.password, values.checkbox)}}
+      onSubmit={(values) => {loginProcess(values.email, values.password, values.checkbox, values.captcha)}}
     >
     {({ values,
       errors,
@@ -58,8 +59,10 @@ const LoginForm = ({loginProcess, errorMessage}) => (
           <Field type="password" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} placeholder="password" />
           {errors.password && touched.password ? <span className={s.error}>{errors.password}</span> : null} <br></br>
           <Field type="checkbox" name="checkbox"/> remember me <br></br>
-          {errorMessage && <div className={s.error__full_form}>{errorMessage}</div> }
-          <button type="submit" disabled={isSubmitting}>
+          {captcha && <img src={captcha}></img>}
+          {captcha && <Field type="input" name="captcha" onChange={handleChange} onBlur={handleBlur} value={values.captcha} placeholder="Type symbols from image" />}
+          {errorMessage && <div className={s.error__full_form}>{errorMessage}</div>}
+          <button type="submit" >
             Create
           </button>
         </form>

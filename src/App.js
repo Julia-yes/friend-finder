@@ -21,24 +21,27 @@ class App extends React.Component {
     render() {
         return (
         <Router>
-            <div className="wrapper">
-                <HeaderContainer/>
-                <div className="aside">
-                    <Navbar/>
-                    <OnlineContainer />
-                </div>
-                <div className="wrapper__content">
-                    <Routes>
-                        <Route path="/profile/:userId" element={<ProfileContainer />} />
-                        <Route path="/people" element={<PeopleContainer />} />
-                        <Route path="/messages/*" element={<MessagesContainer />} />
-                        <Route path="/news" element={<News/>} />
-                        <Route path="/music" element={<Music/>} />
-                        <Route path="/settings" element={<Settings/>} />
-                        <Route path="/login" element={<Login/>} />
-                    </Routes>
+            <div className="page">
+                <div className="wrapper">
+                    <HeaderContainer/>
+                    <div className="aside">
+                        <Navbar/>
+                        <OnlineContainer />
+                    </div>
+                    <div className="wrapper__content">
+                        <Routes>
+                            <Route path="/profile/:userId" element={<ProfileContainer />} />
+                            <Route path="/people" element={<PeopleContainer />} />
+                            <Route path="/messages/*" element={<MessagesContainer />} />
+                            <Route path="/news" element={<News/>} />
+                            <Route path="/music" element={<Music/>} />
+                            <Route path="/settings" element={<Settings/>} />
+                            <Route path="/login" element={<Login/>} />
+                        </Routes>
+                    </div>
                 </div>
             </div>
+            
         </Router>
     );
     }
