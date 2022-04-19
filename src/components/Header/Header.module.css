@@ -19,9 +19,10 @@ color: white;
 }
 
 .header .userLink {
+  padding: 0;
   margin: 0;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   border: 2px solid black;
 }
@@ -35,6 +36,8 @@ color: white;
   background-color: black;
   border: none;
   cursor: pointer;
+  margin: 0;
+  display: flex;
 }
 
 .modalWindow {
@@ -47,6 +50,7 @@ display: block;
  list-style: none; 
  margin: 0;
  padding: 0;
+ z-index: 3;
 }
 
 .modalWindow li {

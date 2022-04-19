@@ -1,29 +1,20 @@
 import React from "react";
-import { useState } from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../Common/preloader";
 import Status from "./Status";
-import ProfileDataForm from "./ProfileDataForm"
 
 
 
 const ProfileInfo = (props) => {
-    let [editMode, setEditMode] = useState(false);
     if (!props.profile) {
         return <Preloader />
     }
     let userAva = ((props.profile.photos.large) ? props.profile.photos.large : "/ava.jpg");
-    const savePhoto = (e) => {
-        if (e.target.files.length) {
-            props.savePhotoProcess(e.target.files[0])            
-        }
-    }
     return (
         <div className={s.user__info}>        
             <img className={s.user__avatar} src = {userAva}  alt="ava"/>
-            {props.isOwner && <input type="file" onChange={savePhoto}></input>}
             <Status status = {props.status} updateMyStatus = {props.updateMyStatus}/>
-            {editMode ? <ProfileDataForm profile = {props.profile} error = {props.error} updateMyProfile = {props.updateMyProfile} exitEditMode = {() => {setEditMode(false)}}/> : <ProfileData profile = {props.profile} goToEditMode = {() => {setEditMode(true)}} />}
+            <ProfileData profile = {props.profile} />
         </div>
     )
 };
@@ -41,17 +32,17 @@ const ProfileData = (props) => {
                 </span>
                 {props.profile.lookingForAJob && 
                     <div>
-                        <span>Job description:</span> 
+                        <span>Job description: </span> 
                         <span>{props.profile.lookingForAJobDescription}</span>
                     </div>
                 }            
             </div>
             <div className="Contacts"><b>Contacts:</b>
                 {Object.keys(props.profile.contacts).map(contact=> {
-                    return <Contact key={contact} contactName={contact} contactValue={props.profile.contacts[contact]} />
+                    return (
+                        <Contact key={contact} contactName={contact} contactValue={props.profile.contacts[contact]} />)
                 })}
             </div>
-            <button onClick={props.goToEditMode}>Update</button>
         </div>
     )
 }

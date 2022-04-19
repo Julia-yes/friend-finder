@@ -11,6 +11,7 @@ import Login from './components/Login/Login';
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import ProfileContainer from './components/Profile/ProfileContainer';
+import EditProfileContainer from './components/Profile/ProfileInfo/EditProfileContainer';
 import {isInitialized} from "./components/redux/app-reducer";
 import {connect} from "react-redux";
 
@@ -31,6 +32,7 @@ class App extends React.Component {
                     <div className="wrapper__content">
                         <Routes>
                             <Route path="/profile/:userId" element={<ProfileContainer />} />
+                            <Route path="/profile-edit" element={<EditProfileContainer />} />
                             <Route path="/people" element={<PeopleContainer />} />
                             <Route path="/messages/*" element={<MessagesContainer />} />
                             <Route path="/news" element={<News/>} />
@@ -40,12 +42,9 @@ class App extends React.Component {
                         </Routes>
                     </div>
                 </div>
-            </div>
-            
-        </Router>
-    );
-    }
-    
+            </div>            
+        </Router>);
+    }    
 }
 
 const mapStateToProps = (state) => ({

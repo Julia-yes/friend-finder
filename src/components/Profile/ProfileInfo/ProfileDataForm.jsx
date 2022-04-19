@@ -25,7 +25,7 @@ const ProfileDataForm = (props) => (
         validationSchema={ErrorMessagesSchema}
         onSubmit={(values) => {const result = props.updateMyProfile(values);
           result.then(
-          () => {props.exitEditMode()}
+          
         )}}
       >
       {({ values,
@@ -36,26 +36,29 @@ const ProfileDataForm = (props) => (
         handleSubmit,
         isSubmitting }) => (
           <form onSubmit={handleSubmit}>
-            <label> Fullname:
-              <Field type="input" name="fullName" onChange={handleChange} onBlur={handleBlur} value={values.fullName} placeholder="Type your full name"/>
+            <label className={s.contactLabel}> Fullname: <br></br>
+              <Field className={s.contactField} type="input" name="fullName" onChange={handleChange} onBlur={handleBlur} value={values.fullName} placeholder="Type your full name"/>
             </label>            
             {errors.fullName && touched.fullName ? <span className={s.error}>{errors.fullName}</span> : null} <br></br>
-            <label> About me:
-            <Field type="input" name="aboutMe" onChange={handleChange} onBlur={handleBlur} value={values.aboutMe} placeholder="Type something about yourself" />
+            <label className={s.contactLabel}> About me: <br></br>
+              <Field className={s.contactField} as="textarea" type="imput" name="aboutMe" onChange={handleChange} onBlur={handleBlur} value={values.aboutMe} placeholder="Type something about yourself" />
             </label>
             {errors.aboutMe && touched.aboutMe ? <span className={s.error}>{errors.aboutMe}</span> : null} <br></br>
-            <label> Are you looking a job?: <br></br>
-            <Field type="checkbox" name="lookingForAJob"/> <br></br>
+            <label className={s.contactLabel}> Are you looking for a job?
+              <Field className={s.contactField_checkbox} type="checkbox" name="lookingForAJob"/> <br></br>
             </label>            
-            <label> Job description:
-            <Field type="input" name="lookingForAJobDescription" onChange={handleChange} onBlur={handleBlur} value={values.lookingForAJobDescription} placeholder="What kind of job do you want" />
-            </label>            
+            <label className={s.contactLabel}> Job description: <br></br>
+              <Field className={s.contactField} as="textarea" type="input" name="lookingForAJobDescription" onChange={handleChange} onBlur={handleBlur} value={values.lookingForAJobDescription} placeholder="What kind of job do you want" />
+            </label>
+            <br></br>
+            <label className={s.contactLabel}>          
             Contacts:
             {Object.keys(props.profile.contacts).map(contact=> {
-                   return <Field type="input" name={"contacts." + contact} onChange={handleChange} onBlur={handleBlur} value={values.contacts[contact]} placeholder={contact}/>
+                   return <div><Field className={s.contactField} type="input" name={"contacts." + contact} onChange={handleChange} onBlur={handleBlur} value={values.contacts[contact]} placeholder={contact}/> <br></br></div>
                 })}
             {props.error && <div className={s.errorContactMessage}>{props.error}</div>}
-            <button type="submit" >
+            </label> 
+            <button type="submit" className={s.button}>
               Submit
             </button>
           </form>
