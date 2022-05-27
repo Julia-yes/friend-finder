@@ -22,7 +22,7 @@ const Status = (props) => {
     }
 
         return (
-            <div >
+            <div className={s.user__status} >
                 {editMode
                 ? <input onChange={onChangeStatus} autoFocus={true} onBlur={deActivateEditMode} value={status} />
                 : <div onDoubleClick={activateEditMode}>{props.status || "No status"}</div>}

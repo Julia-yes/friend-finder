@@ -3,28 +3,39 @@ import s from "./Messages.module.css"
 import Dialog from "./Dialogs/Dialogs";
 import Message from "./MassageItem/MessageItem.jsx";
 import { Formik,Field} from 'formik';
-
+import {useParams} from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 const Messages = (props) => {
-    let NamesElement = props.messagesPage.names.map(name => {
-        return <Dialog name={name.name} id={name.id} url={name.url} />
-    })
+    const names = useSelector((state) => state.messagesPage.names);
+    const holderId = useSelector((state) => state.auth.userId);
+    const messages = useSelector((state) => state.messagesPage.messages);
+    const userId = parseInt(useParams().id);
 
-    let MessagesElement = props.messagesPage.messages.map(message => {
-        return <Message message={message.message} id={message.id}/>
-    })
+    const filteredMessages = messages.filter(message => message.userIdFrom === userId || message.userIdTo === userId)
+    .map(message => {
+        return {
+            ...message,
+            user: names.filter(user => user.id === message.userIdFrom)[0]
+        }
+    });
 
+    let NamesElement = names.filter(name => name.id !== holderId).map(name => {
+        return <Dialog userId={userId} name={name.name} surname={name.surname} id={name.id} url={name.url} status={name.status} key={name.id}/>
+    });
+
+    let MessagesElement = filteredMessages.map(message => {
+        return <Message user={message.user} message={message.message} userIdFrom={message.userIdFrom} userIdTo={message.userIdTo} date={message.date}/>
+    })
     return (
         <div className={s.messages_area}>
-            <div className={s.messages__dialogs}>
+            <div className={s.messages__block}>
                 {NamesElement}
             </div>
-            <div>
-                <div className={s.messages__content}>
-                    {MessagesElement}
-                </div>
-                <MessageForm addMessage={props.addMessage}/>
+            <div className={s.messages__block}>
+                {MessagesElement}
             </div>
+            <MessageForm addMessage={props.addMessage}/>
         </div>
     )
 };
@@ -48,7 +59,7 @@ const MessageForm = (props) => {
             >
                 {({ isSubmitting, handleSubmit }) => (
                     <form onSubmit={handleSubmit} className={s.messages__form}>
-                        <Field type="input" name="input" className={s.form__input} />
+                        <Field type="input" name="input" className={s.form__input} placeholder="Type your message"/>
                         <button type="submit" disabled={isSubmitting} className={s.form__button}>Send</button>
                     </form>
                 )}

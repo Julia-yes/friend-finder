@@ -1,6 +1,7 @@
 import {usersApi} from "../../api/api"
 
 const SET_AUTH_DATA = "SET_AUTH_DATA";
+const SET_PHOTO = "SET_PHOTO";
 const SET_ERROR_MESSAGE = "SET_ERROR_MESSAGE";
 const SET_CAPTCHA_URL = "SET_CAPTCHA_URL";
 
@@ -22,6 +23,12 @@ const authReducer = (state = initialState, action) => {
                 ...action.data
             }
         };
+        case SET_PHOTO: {
+            return {
+                ...state,
+                photo: action.photo
+            }
+        };
         case SET_ERROR_MESSAGE: {
             return {
                 ...state,
@@ -40,6 +47,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setUserAuthData = (userId, login, email, isLogin, captcha) => ({type: SET_AUTH_DATA, data : {userId, login, email, isLogin, captcha}});
+export const setPhpoto = (photoUrl) => ({type: SET_PHOTO, photoUrl});
 export const setErrorMessage = (errorMessage) => ({type: SET_ERROR_MESSAGE, errorMessage});
 export const setCaptchaUrl = (captchaUrl) => ({type: SET_CAPTCHA_URL, captchaUrl});
 
@@ -55,6 +63,7 @@ export const isAutorized = () => {
             });
     }
 }
+
 export const loginProcess = (email, password, rememberMe, captcha) => {
     return (dispatch) => {
         usersApi.login(email, password, rememberMe, captcha)

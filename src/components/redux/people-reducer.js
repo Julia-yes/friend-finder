@@ -59,7 +59,7 @@ const peopleReducer = (state = initialState, action) => {
                 ...state,
                 inProcessFollowed: action.inProcess
                     ? [...state.inProcessFollowed, action.userId]
-                    : state.inProcessFollowed.filter(id => id != action.userId)
+                    : state.inProcessFollowed.filter(id => id !== action.userId)
             }
         }
         default:

@@ -1,11 +1,23 @@
-
 .header {
-  grid-area: h;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header__area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header img {
-  width: 170px;
-  align-items: center;
+  height: 30px;
 }
 
 .login__block {

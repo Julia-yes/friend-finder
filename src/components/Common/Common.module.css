@@ -1,0 +1,24 @@
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.centralPart {  
+  display: grid;
+  grid-template-areas:
+  "a w f";
+  grid-template-columns: 18fr 64fr 18fr;
+  padding-top: 60px;
+}
+
+.aside {
+  grid-area: a;
+}
+
+.wrapper__content {
+  grid-area: w;
+}
+
+.follow__bar {
+  grid-area: f;
+}

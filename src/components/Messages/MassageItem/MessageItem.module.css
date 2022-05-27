@@ -1,19 +1,79 @@
 .content__message {
-    color: #4d4d4d;
+    position: relative;
+    color: #939598;
     padding: 20px;
-    width: 80%;
-    margin: 20px
+    width: 70%;
+    border-radius: 10px;
+    font-size: 13px;
 }
 
-.content__message_me {
+.content__message_either:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #e9f6fc;
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    transform: rotate(45deg);
+}
+
+.content__message_me:before {
+    content: "";
+    width: 20px;
+    height: 20px;
     background-color: #f3f9eb;
-    margin-left: auto;
-    margin-right: 0;
-
-
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    transform: rotate(45deg);
 }
 
 .content__message_either {
     background-color: #e9f6fc;
+    float: right;
+}
 
+.content__message_me {
+    background-color: #f3f9eb;
+    float: left;
+}
+
+.message__area {
+    position: relative;
+    padding: 10px;
+    color: #939598;
+}
+
+.message__area_top{
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #caef8e;
+}
+
+.message__name {
+    color: #4d4d4d;
+    font-size: 14px;
+}
+
+.message__date {
+    font-size: 10px;
+}
+
+.message__message {
+    padding: 10px;
+}
+
+.message__ava {
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message__ava_me {
+    float: right;
 }

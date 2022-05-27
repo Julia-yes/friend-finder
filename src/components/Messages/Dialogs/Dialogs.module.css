@@ -1,11 +1,70 @@
-.dialogs__item {
+.dialog__area {
+    position: relative;
+    padding: 10px;
+    padding-left: 70px;
+    color: #939598;
+}
+
+.dialog__area_top{
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.dialog__name {
     color: #27aae1;
 }
 
+.dialog__date {
+    color: #939598;
+}
+
+.dialog__message {
+    color: #939598;
+}
+
 .dialogs__ava {
+    position: absolute;
+    top:0;
+    left: 0;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
     margin: 10px;
+}
+
+.dot {
+    content: "";
+    background: #8dc63f;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    padding: 0;
+    top: 54px;
+    left: 30px;
+}
+
+.dialog__holder {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 2px solid #f1f2f2;
+}
+
+.dialog__holder a {
+    text-decoration: none;
+}
+
+.dialog__holder:hover {
+    border-bottom: 2px solid #8dc63f;
+}
+
+.dialog__holder:active {
+    border-bottom: 2px solid #8dc63f;
+}
+.dialog__holder_activ {
+    border-bottom: 2px solid #8dc63f;
 }

@@ -1,3 +1,45 @@
-.post__area {
-    margin-left: 400px;
+.posts__area {
+    padding-left: 100px;
+}
+
+.post__form {
+    margin-left: 200px;
+    padding: 20px 50px;
+    border-bottom: 2px solid #f1f2f2;
+   
+}
+
+.post__posts {
+   
+}
+
+.button {
+    color: white;
+    background-color: #27aae1;
+    border-radius: 30px;
+    padding: 7px 25px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    transition-duration: 0.3s;
+    margin-left: 50px;
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+.button:hover {
+    background-color:#157ca8;
+}
+
+.button:active {
+   box-shadow: inset 0 0 2px 1px;
+   background-color: #27aae1;
+}
+
+.post__textarea {
+    padding: 10px;
+    border-color: #ccc;    
+    outline:none; 
+    color: #6d6e71;
 }

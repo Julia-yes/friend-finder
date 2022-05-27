@@ -43,3 +43,8 @@
 .person__button_delete {
     background-color: #27aae1;
 }
+
+.person__status {
+    color: #939598;
+    font-size: 13px;
+}

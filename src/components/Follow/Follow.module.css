@@ -1,0 +1,41 @@
+.follow__field {
+    color: #6d6e71;
+    padding: 20px 0 0 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.follow__person {
+    position: relative;
+    border-bottom: 1px solid #f1f2f2;
+    padding: 10px 0;
+    margin-top: 15px;
+}
+
+.follow__ava {
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.follow__button {
+    color: white;
+    padding: 4px 10px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #8dc63f;
+    margin-left: 50px;
+    font-size: 13px;
+}
+
+.follow__name {
+    font-size: 14px;
+    color: #27aae1;
+    margin-left: 50px;
+    padding-bottom: 10px;
+}

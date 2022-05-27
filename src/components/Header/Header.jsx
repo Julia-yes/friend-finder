@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import s from "./Header.module.css"
+import s from "./Header.module.css";
+import c from "../Common/Common.module.css";
 import logo from '../../images/logo.png';
 import { NavLink } from "react-router-dom";
 
@@ -8,19 +9,24 @@ const Header = (props) => {
     let changeVisibilityModalWindow = () => {setWindowState(!windowState)}
     return (
         <header className={s.header}>
-            <img src={logo} alt="logo" />
-            <div className={s.login__block}>
-                {props.isLogin 
-                ? <div>
-                    <button className={s.login__block__button} onClick = {changeVisibilityModalWindow}>
-                        {props.profile
-                        ? <img className={s.userLink} src={props.profile.photos.large}></img>
-                        : <img className={s.userLink} src="/ava.jpg"></img>}
-                    </button> 
-                    <ModalUserLink isOpenModal = {windowState}  logoutProcess = {props.logoutProcess} changeVisibilityModalWindow/>                   
-                </div>
-                : <NavLink  to={"/login"}>Login</NavLink> }
+            <div className={c.wrapper}>
+                <div className={s.header__area}>
+                    <img src={logo} alt="logo" />
+                    <div className={s.login__block}>
+                        {props.isLogin 
+                        ? <div>
+                            <button className={s.login__block__button} onClick = {changeVisibilityModalWindow} > 
+                                {props.profile
+                                ? <img className={s.userLink} src={props.profile.photos.large}></img>
+                                : <img className={s.userLink} src="/ava.jpg"></img>}
+                            </button> 
+                            <ModalUserLink isOpenModal = {windowState}  logoutProcess = {props.logoutProcess} changeVisibilityModalWindow/>                   
+                        </div>
+                        : <NavLink  to={"/login"}>Login</NavLink> }
+                    </div>
+                </div>                
             </div>
+            
         </header>
     )
 }

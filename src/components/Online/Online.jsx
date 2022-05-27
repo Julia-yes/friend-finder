@@ -5,16 +5,16 @@ const Online = (props) => {
 
     let OnlineFriend = props.names.map(name => {
         if (name.status == "online") {
-            return <img className={s.online__friend} src={name.url}/>
+            return <span className={s.online__person}>
+                        <img className={s.online__friend} src={name.url}/>
+                        <span className={s.dot}></span>
+                    </span>
         }
-
     })
     return (
-        <div className={s.online_field}>
+        <div className={s.online__field}>
             <button className={s.online__button}> Chat online</button>
-            <div>
-                {OnlineFriend}
-            </div>
+            {OnlineFriend}
         </div>
     )
 }

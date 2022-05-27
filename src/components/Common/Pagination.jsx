@@ -11,13 +11,14 @@ const Pagination = (props) => {
         pages.push(i)
     }
     return <div className={s.pages__area}>
-        {(portionNumber > 0) ? <button onClick={() => {setPortionNumber(portionNumber-1)}}>Previous</button> : null}
+        {(portionNumber == 0) ? <button onClick={() => {setPortionNumber(portionNumber-1)}} className={s.button + " " + s.button__prev } disabled></button> 
+            : <button onClick={() => {setPortionNumber(portionNumber-1)}} className={s.button + " " + s.button__prev}></button>}
         {pages.map(p => {
-            return <span className={props.activePage === p && s.activePage}
+            return <div className={s.pages__number}><div className={props.activePage === p && s.activePage}
                     onClick={(e) => {props.onPageChanges(p)}
-            }>{p}</span>
+            }>{p}</div></div>
         })}
-        {((portionNumber+1) < lastPortion) ? <button onClick={() => {setPortionNumber(portionNumber+1)}}>Next</button> : null}
+        {((portionNumber+1) < lastPortion) ? <button onClick={() => {setPortionNumber(portionNumber+1)}} className={s.button + " " + s.button__next}></button> : null}
     </div>
 
 }

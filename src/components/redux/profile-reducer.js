@@ -11,12 +11,12 @@ const ERROR_CONTACTS_MESSAGE = "ERROR_CONTACTS_MESSAGE";
 
 let initialState = {
  posts : [
-                    {id: 0, message: "Hello, people", likesCount: 3},
-                    {id: 1, message: "It's my first post", likesCount: 15},
-                    {id: 2, message: "Hi", likesCount: 3},
-                    {id: 3, message: "It's my second post", likesCount: 15},
-                    {id: 4, message: "Yo", likesCount: 3},
-                    {id: 5, message: "Joy", likesCount: 15}
+                    {id: 0, date: new Date(2021, 2, 21).toISOString().slice(0,18), message: "Hello, people", likesCount: 3, dislikesCount: 1},
+                    {id: 1, date: new Date(2021, 2, 24).toISOString().slice(0,10), message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.   ", likesCount: 15, dislikesCount: 4},
+                    {id: 2, date: new Date(2021, 3, 17).toISOString().slice(0,10), message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.   ", likesCount: 3, dislikesCount: 1},
+                    {id: 3, date: new Date(2021, 3, 25).toISOString().slice(0,10), message: "It's my second post", likesCount: 15, dislikesCount: 4},
+                    {id: 4, date: new Date(2021, 4, 4).toISOString().slice(0,10), message: "Yo", likesCount: 3, dislikesCount: 2},
+                    {id: 5, date: new Date(2021, 4, 21).toISOString().slice(0,10), message: "Joy", likesCount: 15, dislikesCount: 1}
  ],
  profile : null,
  status : " ",
@@ -28,7 +28,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             return {
                 ...state,
-                posts : [...state.posts, {id: 1, message: action.text , likesCount: 10}]
+                posts : [...state.posts, {id: 1, date: new Date().toISOString().slice(0,10), message: action.text , likesCount: 0, dislikesCount: 0}]
             }
         };
         case SET_USERS_PROFILE: {

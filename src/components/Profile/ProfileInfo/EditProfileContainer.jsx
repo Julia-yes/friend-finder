@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
-import Status from "./Status";
 import ProfileDataForm from "./ProfileDataForm";
 import {connect} from "react-redux";
 import {updateMyStatus, updateMyProfile, savePhotoProcess} from "./../../redux/profile-reducer.js";
@@ -28,7 +27,7 @@ const EditProfileInfo = (props) => {
         }
     }
     return (
-        <div className={s.user__info_edit}>        
+        <div className={s.info_edit}>        
             <img className={s.user__avatar_edit} src = {props.profile.photos.large}  alt="ava"/>
             <div className={s.input_file}>
                 <label for="input_file" className={s.input_file__label}>                    
