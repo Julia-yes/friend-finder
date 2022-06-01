@@ -5,7 +5,7 @@ import { Formik, Field, Form } from 'formik';
 
 const MyPosts = (props) => {
     let PostElement = props.posts.sort((p1, p2) => new Date(p2.date)-new Date(p1.date)).map(p => {
-        return <Post message={p.message} likesCount={p.likesCount} dislikesCount={p.dislikesCount} date={p.date} profile={props.profile} />
+        return <Post message={p.message} likesCount={p.likesCount} dislikesCount={p.dislikesCount} date={p.date} profile={props.profile} id = {p.id} key={p.id} likePost={props.likePost} dislikePost={props.dislikePost}/>
     })
     
     return (

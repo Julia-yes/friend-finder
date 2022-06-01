@@ -11,6 +11,7 @@
     height: 200px;
     border-radius: 50%;
     border: 10px solid #27a9e133;
+    margin: 0 auto;
 }
 
 .user__name {
@@ -20,7 +21,7 @@
     padding: 10px 0;
 }
 
-.user__status, .user__jobfinding {
+.user__status, .user__answerArea {
 display: flex;
 flex-direction: row;
 justify-content: center;
@@ -29,10 +30,12 @@ padding: 10px 0;
 
 .user__description {
     padding: 10px 0;
+    text-align: center;
 }
 
 .user__contacts {
 display: flex;
 flex-direction: column;
 justify-content: center;
+text-align: center;
 }

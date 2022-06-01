@@ -15,18 +15,16 @@ const HolderInfo = (props) => {
             <div className={s.user__status}>Status: "<Status status = {props.status} updateMyStatus = {props.updateMyStatus}/>"</div>           
             <div className={s.user__description}>My description: {props.profile.aboutMe}</div>
             <div className={s.user__jobfinding}>
-                <div>Looking for a job : </div>
-                <div className={s.user__answerArea}>                   
-                    {props.profile.lookingForAJob ? <div> Yes</div> : <div> No</div>}                  
-                </div>
+                <div className={s.user__answerArea}>Looking for a job : {props.profile.lookingForAJob ? <div> Yes</div> : <div> No</div>}                  
+                </div>                
                 {props.profile.lookingForAJob && 
-                    <div>
-                        <span>Job description: </span> 
-                        <span>{props.profile.lookingForAJobDescription}</span>
+                    <div className={s.user__answerArea}>
+                        <div>Job description: </div> 
+                        <div>{props.profile.lookingForAJobDescription}</div>
                     </div>
                 }            
             </div>
-            <div className={s.user__contacts}><b>Contacts:</b>
+            <div className={s.user__contacts}><div>Contacts:</div>
                 {Object.keys(props.profile.contacts).filter(filt=>props.profile.contacts[filt] !== null && props.profile.contacts[filt] !== "")
                 .map(contact=> {
                     return (

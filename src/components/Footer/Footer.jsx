@@ -17,7 +17,7 @@ const Footer = (props) => {
                 <div className={s.footer}>
                     <div className={s.footer__logos}>
                         <img className={s.footer__logo} src="https://themified.com/friend-finder/images/logo-black.png"></img>
-                        <div classNme={s.footer__socialLogos} >
+                        <div className={s.footer__socialLogos} >
                             <img src={fb} className={s.social__logo}></img>
                             <img src={tw} className={s.social__logo}></img>
                             <img src={insta} className={s.social__logo}></img>

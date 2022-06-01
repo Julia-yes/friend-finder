@@ -5,7 +5,7 @@ const Online = (props) => {
 
     let OnlineFriend = props.names.map(name => {
         if (name.status == "online") {
-            return <span className={s.online__person}>
+            return <span className={s.online__person}  key={name.id}>
                         <img className={s.online__friend} src={name.url}/>
                         <span className={s.dot}></span>
                     </span>

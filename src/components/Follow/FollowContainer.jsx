@@ -5,7 +5,8 @@ import {addFriend} from "../redux/messages-reducer"
 
 let mapStateToProps = (state) => {
     return {
-        names: state.messagesPage.names
+        names: state.messagesPage.names,
+        holderId: state.auth.userId
     }
 }
 

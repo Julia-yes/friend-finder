@@ -25,7 +25,7 @@ const Messages = (props) => {
     });
 
     let MessagesElement = filteredMessages.map(message => {
-        return <Message user={message.user} message={message.message} userIdFrom={message.userIdFrom} userIdTo={message.userIdTo} date={message.date}/>
+        return <Message user={message.user} message={message.message} userIdFrom={message.userIdFrom} userIdTo={message.userIdTo} date={message.date} key={message.id}/>
     })
     return (
         <div className={s.messages_area}>
@@ -35,7 +35,7 @@ const Messages = (props) => {
             <div className={s.messages__block}>
                 {MessagesElement}
             </div>
-            <MessageForm addMessage={props.addMessage}/>
+            <MessageForm addMessage={props.addMessage} userId = {userId} />
         </div>
     )
 };
@@ -53,8 +53,10 @@ const MessageForm = (props) => {
                     return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                    props.addMessage(values.input);
+                    props.addMessage(values.input, props.userId);
+                    values.input = " ";
                     setSubmitting(false);
+                    
                 }}
             >
                 {({ isSubmitting, handleSubmit }) => (

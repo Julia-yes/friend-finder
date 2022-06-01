@@ -2,10 +2,9 @@ import React from "react";
 import s from "./Follow.module.css"
 
 const Follow = (props) => {
-
     let FollowFriend = props.names.map(name => {
-        if (name.friend) {
-            return <div className={s.follow__person}>
+        if (name.id !== props.holderId && !name.friend) {
+            return <div className={s.follow__person} key={name.id}>
                         <img className={s.follow__ava} src={name.url}/>
                         <div className={s.follow__name}>{name.name} {name.surname}</div>
                         <button className={s.follow__button} onClick = {() => props.addFriend(name.id)} >Add Friend</button>
